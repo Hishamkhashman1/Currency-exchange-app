@@ -1,26 +1,36 @@
-# Currency-exchange-app
-API powered global currency exchange tool 
+# Currency Exchange App
 
+PyQt5 desktop currency converter that uses Yahoo Finance (via `yfinance`) to fetch real-time rates. The UI lets you pick any supported currency, type an amount, and see the converted value plus the current exchange rate.
 
+## Project Layout
 
-A lightweight Python desktop application for converting currencies using real-time exchange rates.
+- `currency_data.py` – dictionary of supported currency codes and helper to get them sorted.
+- `app.py` – `CurrencyExchangeApp` window class: builds the UI, wires the combo boxes, and performs conversions.
+- `main.py` – entry point that creates `QApplication` and launches the window.
 
-The app provides a simple graphical interface where users can select currencies, enter an amount, and instantly see the converted value and exchange rate.
+## Getting Started
 
-## Features
-- Desktop GUI built with PyQt5
-- Real-time exchange rates via Yahoo Finance (yfinance)
-- Supports a wide range of global currencies
-- Auto-complete currency selection with country flags
+1. Create and activate a virtual environment (recommended):
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   If there is no `requirements.txt`, manually install the basics:
+   ```bash
+   pip install PyQt5 yfinance
+   ```
+3. (Optional) Place flag images under `flags/<CURRENCY_CODE>.png` to show icons in the drop-downs.
+4. Run the app:
+   ```bash
+   python3 main.py
+   ```
 
-## Tech Stack
-- Python
-- PyQt5
-- yfinance
+## Notes
 
-## How to Run
-```bash
-pip install PyQt5 yfinance
-python main.py
-
-Please use it and share it if you like it :D
+- Exchange rates come from Yahoo Finance. Ensure the machine has internet access when running conversions.
+- The amount field accepts commas; they are stripped before conversion.
+- Errors and validation feedback appear through PyQt message boxes.
